@@ -4,14 +4,14 @@ const calculator = () => {
     {
       type: "input",
       name: "supply_voltage",
-      message: "Type supply voltage (Vcc): ",
+      message: "Type supply voltage (Vcc) (< Vceo): ",
     },
     {
       type: "input",
       name: "hfe_value",
       message: "Type Hfe value:  ",
       default() {
-        return "200";
+        return "150";
       },
     },
     {
@@ -29,8 +29,9 @@ const calculator = () => {
     );
 
     const quiescent_collector_voltage = Vcc_supply_voltage / 2;
-    const collector_load_resistor =
-      quiescent_collector_voltage / quiescent_collector_current;
+    const collector_load_resistor = Math.round(
+      quiescent_collector_voltage / quiescent_collector_current
+    );
     const emitter_voltage = (Vcc_supply_voltage / 100) * 12;
     const emitter_resistor = Math.round(
       emitter_voltage / quiescent_collector_current
