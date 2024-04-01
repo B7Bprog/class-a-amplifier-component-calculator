@@ -1,10 +1,11 @@
+const { log } = require("console");
 const inquirer = require("inquirer");
 const calculator = () => {
   const questions = [
     {
       type: "input",
       name: "supply_voltage",
-      message: "Type supply voltage (Vcc) (< Vceo): ",
+      message: "Type supply voltage (Vcc) (< Vceo) (Volts): ",
     },
     {
       type: "input",
@@ -21,7 +22,12 @@ const calculator = () => {
         "Type the Quiescent Collector Current (Amps) (10-20% of Ic(max)): ",
     },
   ];
-
+  console.log(
+    "\x1b[33m%s\x1b[0m",
+    "Component Calculator for NPN Bipolar Junction (BJT) Transistors"
+  );
+  console.log("\x1b[32m%s\x1b[0m", "Single-ended Class A Operation");
+  console.log();
   inquirer.prompt(questions).then((answers) => {
     const Vcc_supply_voltage = Number(answers.supply_voltage);
     const hfe_value = Number(answers.hfe_value);
@@ -63,11 +69,28 @@ const calculator = () => {
       "Base-GND Resistor (Rb) (OHMs)": lower_base_resistor,
       "Maximum RMS Output Power (Prms) (Watts)": max_rms_output_power,
     };
+    const componentPowerValues = {
+      "Collector Resistor Min. Power (Watts)": Math.round(
+        quiescent_collector_voltage * quiescent_collector_current
+      ),
+      "Emitter Resistor Min. Power (Watts)": Math.round(
+        emitter_voltage * quiescent_collector_current
+      ),
+    };
+    console.clear();
+    console.log(
+      "\x1b[33m%s\x1b[0m",
+      "Component Calculator for NPN Bipolar Junction (BJT) Transistors"
+    );
+    console.log("\x1b[32m%s\x1b[0m", "Single-ended Class A Operation");
     console.log();
     console.log("\x1b[36m%s\x1b[0m", "Initial parameters");
     console.table(initialParameters);
     console.log("\x1b[35m%s\x1b[0m", "Results");
     console.table(calculatedValues);
+    console.log("\x1b[32m%s\x1b[0m", "Power Ratings");
+    console.table(componentPowerValues);
+    console.log();
     inquirer.prompt({ type: "input", name: "Hit Enter to exit" });
   });
 };
