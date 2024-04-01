@@ -20,6 +20,7 @@ const calculator = () => {
       message: "Type the Quiescent Collector Current (10-20% of Ic(max)): ",
     },
   ];
+
   inquirer.prompt(questions).then((answers) => {
     const Vcc_supply_voltage = Number(answers.supply_voltage);
     const hfe_value = Number(answers.hfe_value);
@@ -65,6 +66,7 @@ const calculator = () => {
     console.table(initialParameters);
     console.log("\x1b[35m%s\x1b[0m", "Results");
     console.table(calculatedValues);
+    inquirer.prompt({ type: "input", name: "Hit Enter to exit" });
   });
 };
 calculator();
