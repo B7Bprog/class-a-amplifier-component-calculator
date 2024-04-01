@@ -17,7 +17,8 @@ const calculator = () => {
     {
       type: "input",
       name: "quiescent_collector_current",
-      message: "Type the Quiescent Collector Current (10-20% of Ic(max)): ",
+      message:
+        "Type the Quiescent Collector Current (Amps) (10-20% of Ic(max)): ",
     },
   ];
 
