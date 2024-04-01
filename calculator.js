@@ -59,8 +59,8 @@ const calculator = () => {
     const calculatedValues = {
       "Collector Resistor (Rc) (OHMs)": collector_load_resistor,
       "Emitter Resistor (Re) (OHMs)": emitter_resistor,
-      "Upper Base Resistor (Rb) (OHMs)": upper_base_resistor,
-      "Lower Base Resistor (Rb) (OHMs)": lower_base_resistor,
+      "Vcc-Base Resistor (Rb) (OHMs)": upper_base_resistor,
+      "Base-GND Resistor (Rb) (OHMs)": lower_base_resistor,
       "Maximum RMS Output Power (Prms) (Watts)": max_rms_output_power,
     };
     console.log();
