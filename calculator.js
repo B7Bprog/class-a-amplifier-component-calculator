@@ -141,7 +141,7 @@ const calculator = () => {
           };
           const currentDate = new Date().toLocaleString();
           await fs.appendFile(
-            __dirname + "/data.txt",
+            "./data.txt",
             JSON.stringify(
               {
                 Date: currentDate,
@@ -167,7 +167,7 @@ const calculator = () => {
           };
           const currentDate = new Date().toLocaleString();
           await fs.appendFile(
-            __dirname + "/data.txt",
+            "./data.txt",
             JSON.stringify(
               {
                 Date: currentDate,
